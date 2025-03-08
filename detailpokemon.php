@@ -44,7 +44,7 @@ require_once("head.php");
 
 require_once("database-connection.php");
 $sql = "SELECT * FROM pokemon WHERE IDPOKEMON =" . $_GET["id"] ;
-$result = mysqli_query($databaseConnection,$sql, MYSQLI_USE_RESULT);
+$result = mysqli_query($databaseConnection,$sql, MYSQLI_USE_RESULT); //????
 
 
 if(mysqli_num_rows($result) > 0){
