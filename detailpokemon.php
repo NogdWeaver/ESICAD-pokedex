@@ -44,11 +44,13 @@ require_once("head.php");
 
 
 require_once("database-connection.php");
-$sql = "SELECT IDPOKEMON, NOMPOKEMON, URL_PHOTO,PV, PA, PD, PVIT, PCS, p1.NOMTYPES AS nomtype1 ,p2.NOMTYPES AS nomtype2 
-FROM pokemon 
-join typespokemon AS p1 on p1.IDType=pokemon.idType1 
-LEFT join typespokemon AS p2 on p2.IDType=pokemon.idType2
-WHERE IDPOKEMON = " . $_GET["id"];
+$sql = "SELECT p.IDPOKEMON, p.NOMPOKEMON, p.URL_PHOTO,p.PV, p.PA, p.PD, p.PVIT, p.PCS, t1.NOMTYPES AS nomtype1 ,t2.NOMTYPES AS nomtype2
+FROM pokemon AS p
+join typespokemon AS t1 on t1.IDType=p.idType1 
+LEFT join typespokemon AS t2 on t2.IDType=p.idType2
+
+
+WHERE p.IDPOKEMON =" . $_GET["id"];
 
 var_dump($_GET);
 
@@ -59,7 +61,7 @@ if(mysqli_num_rows($result) > 0){
         echo "<tr>" .
          "<td>".  $row["IDPOKEMON"] . "</td>".
          "<td>" .
-          "<a href=\"detailpokemon.php?id=" . $row['IDPOKEMON'] . "\">". $row["NOMPOKEMON"] ."</a>"
+         $row["NOMPOKEMON"] ."</a>"
           . "</td>" .
          "<td>" . "<img src=" . 
          $row["URL_PHOTO"] . ">" . "</td>" . 
@@ -77,7 +79,7 @@ if(mysqli_num_rows($result) > 0){
          $row["nomtype1"] . "</td>" .
          "<td>" . 
          $row["nomtype2"] . "</td>" .
-        "<td>" . 
+
           "</tr>";
 
     }
@@ -85,6 +87,7 @@ if(mysqli_num_rows($result) > 0){
 
 else{
     echo "0 results";
+
 }
 
  
@@ -93,6 +96,10 @@ else{
 
     </tbody>
 </table>
+
+
+    
+
 
 
 
