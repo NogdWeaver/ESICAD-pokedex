@@ -97,11 +97,20 @@ if(mysqli_num_rows($result) > 0){
 
           "</tr>";
 
-        echo 
+        if($row['idAncetre'] != NULL){
+            echo "<a href=\"detailpokemon.php?id=" . $row['idAncetre'] . "\">". "Ancetre" ."</a>";
+        }
 
-        "<a href=\"detailpokemon.php?id=" . $row['idAncetre'] . "\">". "Ancetre" ."</a>".
-        "<a href=\"detailpokemon.php?id=" . $row['idEvolution'] . "\">". "Evolution" ."</a>"
-        ;
+        else { 
+            echo "Pas d'Ancetre";
+        }
+
+        if($row['idEvolution'] != NULL){
+            echo "<a href=\"detailpokemon.php?id=" . $row['idEvolution'] . "\">". "Evolution" ."</a>" ;
+        }
+        else{
+            echo "Pas d'Evolution";
+        }
     }
 
 }
