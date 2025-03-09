@@ -91,9 +91,6 @@ if(mysqli_num_rows($result) > 0){
          $row["nomtype2"] . "</td>" .
 
             "<td>".
-         $row["idAncetre"] . "</td>" .
-         "<td>" . 
-         $row["idEvolution"] . "</td>" .
 
           "</tr>";
 
