@@ -42,7 +42,7 @@ if(mysqli_num_rows($result)>0){
     while($row = mysqli_fetch_assoc($result)){
          echo "<tr>" . "<td>". $row["IDPOKEMON"] . "</td>".
           "<td>" . 
-         "<a href='detailpokemon.php'>". $row["NOMPOKEMON"] ."</a>"
+            "<a href=\"detailpokemon.php?id=" . $row['IDPOKEMON'] . "\">". $row["NOMPOKEMON"] ."</a>"
           . "</td>" .
           "<td>" . "<img src=" . 
           $row["URL_PHOTO"] . ">" . "</td>" .

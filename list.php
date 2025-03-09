@@ -27,21 +27,6 @@ require_once("head.php");
             Portrait
             </th>
             <th>
-            Point de Vie
-            </th>
-            <th>
-            Point d'Attaque
-            </th>
-            <th>
-            Point de défense
-            </th>
-            <th>
-            Point de Vitesse
-            </th>
-            <th>
-            Point spécial
-            </th>
-            <th>
             Type 1
             </th>
             <th>
@@ -54,7 +39,7 @@ require_once("head.php");
 
 <?php
 require_once("database-connection.php");
-$sql =     "SELECT IDPOKEMON, NOMPOKEMON, URL_PHOTO,PV, PA, PD, PVIT, PCS, p1.NOMTYPES AS nomtype1 ,p2.NOMTYPES AS nomtype2 
+$sql =     "SELECT IDPOKEMON, NOMPOKEMON, URL_PHOTO, p1.NOMTYPES AS nomtype1 ,p2.NOMTYPES AS nomtype2 
 FROM pokemon join typespokemon AS p1 on p1.IDType=pokemon.idType1 
 LEFT join typespokemon AS p2 on p2.IDType=pokemon.idType2 
 ORDER BY IDPOKEMON";
@@ -70,16 +55,6 @@ if(mysqli_num_rows($result) > 0){
           . "</td>" .
          "<td>" . "<img src=" . 
          $row["URL_PHOTO"] . ">" . "</td>" . 
-         "<td>" . 
-         $row["PV"] . "</td>" .
-         "<td>" . 
-         $row["PA"] . "</td>" .
-         "<td>" . 
-         $row["PD"] . "</td>" .
-         "<td>" . 
-         $row["PVIT"] . "</td>" .
-         "<td>" . 
-         $row["PCS"] . "</td>" .
          "<td>".
          $row["nomtype1"] . "</td>" .
          "<td>" . 
