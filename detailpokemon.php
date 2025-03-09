@@ -3,6 +3,8 @@ require_once("head.php");
 ?>
 
 
+<!-- Préparation du tableau -->
+
 <table>
     <thead>
         <tr>
@@ -42,11 +44,12 @@ require_once("head.php");
 
 <?php
 
+//Connection a la BDD et requette 
 
 require_once("database-connection.php");
 $sql = "SELECT p.IDPOKEMON, p.NOMPOKEMON, p.URL_PHOTO,p.PV, p.PA, p.PD, p.PVIT, p.PCS, t1.NOMTYPES AS nomtype1 ,t2.NOMTYPES AS nomtype2,
 
-e.idEvolution, a.idAncetre
+e.idEvolution, a.idAncetre 
 
 
 FROM pokemon AS p
@@ -59,15 +62,19 @@ LEFT JOIN pokemon AS p3 ON a.idAncetre = p3.IDPOKEMON
 join typespokemon AS t1 on t1.IDType=p.idType1 
 LEFT join typespokemon AS t2 on t2.IDType=p.idType2
 
+ 
 
-WHERE p.IDPOKEMON =" . $_GET["id"];
+WHERE p.IDPOKEMON =" . $_GET["id"]; //larequette n'est pas super opti mais j'avais besoin d'obtenir idAncetre et idEVolution 
 
 
 $result = mysqli_query($databaseConnection,$sql); 
 
 
 if(mysqli_num_rows($result) > 0){
-    while($row = mysqli_fetch_assoc($result)){
+    while($row = mysqli_fetch_assoc($result)){ 
+
+        //remplissage  du tableau des informations des pokémons 
+
         echo "<tr>" .
          "<td>".  $row["IDPOKEMON"] . "</td>".
          "<td>" .
@@ -94,19 +101,21 @@ if(mysqli_num_rows($result) > 0){
 
           "</tr>";
 
+          // 2 Boucle pour vérifier si il existe bien un ancetre et/ou une évolution 
+
         if($row['idAncetre'] != NULL){
-            echo "<a href=\"detailpokemon.php?id=" . $row['idAncetre'] . "\">". "Ancetre" ."</a>";
+            echo "<a href=\"detailpokemon.php?id=" . $row['idAncetre'] . "\">". "<p>"."Ancetre"."</p>" ."</a>";
         }
 
         else { 
-            echo "Pas d'Ancetre";
+            echo "<p>". "Pas d'Ancetre". "</p>";
         }
 
         if($row['idEvolution'] != NULL){
-            echo "<a href=\"detailpokemon.php?id=" . $row['idEvolution'] . "\">". "Evolution" ."</a>" ;
+            echo "<a href=\"detailpokemon.php?id=" . $row['idEvolution'] . "\">"."<p>". "Evolution"."</p>" ."</a>" ;
         }
         else{
-            echo "Pas d'Evolution";
+            echo "<p>". "Pas d'Evolution". "</p>";
         }
     }
 
@@ -126,38 +135,6 @@ else{
 </table>
 
 
-
-    <?php
-    /*
-$sql2 = "SELECT a.idAncetre, e.idEvolution 
-FROM pokemon AS P
-LEFT JOIN evolutions AS e ON e.idAncetre = p.IDPOKEMON
-LEFT JOIN pokemon AS p2 ON e.idEvolution = p2.IDPOKEMON
-LEFT JOIN evolutions AS a ON a.idEvolution = p.IDPOKEMON
-LEFT JOIN pokemon AS p3 ON a.idAncetre = p3.IDPOKEMON
-
-WHERE p.IDPOKEMON =" . $_GET["id"];
-
-$result2 = mysqli_query($databaseConnection,$sql2);
-
-var_dump($result2);
-var_dump($_GET);
-var_dump($row["a.idAncetre"]);
-
-if(mysqli_num_rows($result2) > 0){
-    while($row2 = mysqli_fetch_assoc($result2)){
-        echo $row2["idAncetre"] ;
-
-    }
-}
-
-else{
-    echo "0 results";
-
-}
-
-*/
-?>
 
 
 
