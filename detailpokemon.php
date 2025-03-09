@@ -62,7 +62,6 @@ LEFT join typespokemon AS t2 on t2.IDType=p.idType2
 
 WHERE p.IDPOKEMON =" . $_GET["id"];
 
-var_dump($_GET);
 
 $result = mysqli_query($databaseConnection,$sql); 
 
