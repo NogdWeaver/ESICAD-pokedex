@@ -10,5 +10,10 @@
                 Pokémons par type
             </li>
         </a>
+        <a href="inscription.php">
+            <li>
+                Inscription
+            </li>
+        </a>
     </ul>
 </aside>
