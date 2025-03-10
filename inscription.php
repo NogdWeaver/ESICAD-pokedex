@@ -28,6 +28,9 @@ require_once("head.php");
         </label>
         <input type = "password" id = "mdp" name = "mdp" placeholder="MOT DE PASSE">
     </p>
+    <p>
+        <input type="submit" value="S'inscrire" name = "ok" >
+    </p>
         
 </form>
 
