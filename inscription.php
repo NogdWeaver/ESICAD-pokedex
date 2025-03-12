@@ -3,7 +3,8 @@ require_once("head.php");
 ?>
 
 
-<form>
+
+<form method = "post" action="inscription.php">
     <p>
         <label for = "nom">
             Nom
@@ -26,13 +27,51 @@ require_once("head.php");
         <label for = "mdp" >
             Mot de passe
         </label>
-        <input type = "password" id = "mdp" name = "mdp" placeholder="MOT DE PASSE">
+        <input type = "password" id = "mdp" name = "mdp" placeholder="Votre mot de passe">
     </p>
     <p>
         <input type="submit" value="S'inscrire" name = "ok" >
     </p>
         
 </form>
+
+
+<?php
+
+    require_once("database-connection.php");
+
+    $sql = "SELECT * FROM utilisateurs
+            WHERE pseudo ='".$_POST['pseudo']."'" ;
+
+    $result = mysqli_query($databaseConnection, $sql); 
+
+
+
+
+
+        if(isset($_POST['ok'])){
+            var_dump($_POST);
+
+            if(empty($_POST["nom"])  or empty($_POST["prenom"]) or empty($_POST["pseudo"]) or empty($_POST["mdp"])){
+                echo "Remplissez tout les champs svp";
+            }
+            else{
+                if(mysqli_num_rows($result) == 1 ){
+                    echo "ce pseudo est déjà utilisé";
+                }
+                else{
+                    mysqli_query($databaseConnection, "INSERT INTO utilisateurs SET nom='".$_POST['nom']."',
+                                 prenom='".$_POST['prenom']."', pseudo='".$_POST['pseudo']."', pswd='".md5($_POST['mdp'])."'" );
+                    echo "Vous êtes inscrit!!";
+                }
+            }
+
+        }
+
+
+?>
+
+
 
 
 <?php
