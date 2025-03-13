@@ -28,9 +28,12 @@ require_once("head.php");
 require_once("database-connection.php");
 
 
+
 //$sql = "SELECT * FROM utilisateurs WHERE pseudo ='".$_POST['pseudo']."' AND pswd = '". $_POST['mdp']. "'";
 
 //$result = mysqli_query($databaseConnection,$sql);
+
+
 
 	if(isset($_POST['ok'])){
 	
@@ -43,7 +46,8 @@ require_once("database-connection.php");
 			if(mysqli_num_rows($value = mysqli_query($databaseConnection,
 			"SELECT * FROM utilisateurs WHERE pseudo ='".$_POST['pseudo']."' AND pswd = '". $_POST['mdp']. "'" )) == 1 ){
 
-				session_start();
+
+				
 				$value = mysqli_fetch_assoc($value);
 
 
@@ -53,12 +57,12 @@ require_once("database-connection.php");
 					'nom' => $value["NOM"]
 				];
 
-				global $nomsession;
 
-				$nomsession = $_SESSION["session"]['prenom'] . " " .  $_SESSION["session"]['nom'];
+				echo  $_SESSION["session"]['prenom'] . " " .  $_SESSION["session"]['nom'];
 
-				echo $nomsession;
 
+
+				
 
 			}
 			else{

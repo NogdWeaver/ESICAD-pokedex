@@ -19,6 +19,14 @@
             <h1>Pokedex Du Professeur Chen</h1>
         </a>
 
+        <?php
+            session_start();
+        if(isset($_SESSION['session'])){
+            echo "Session de " . $_SESSION['session']['prenom'];
+        }
+
+        ?>
+
         <form id="search-bar" action="search_pokemon.php" method="GET">
             <span class="input-group">
                 <input id="q" name="q" type="search" placeholder="Rechercher un pokémon"><button type="submit">🔎</button>
