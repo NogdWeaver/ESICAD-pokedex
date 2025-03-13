@@ -15,5 +15,10 @@
                 Inscription
             </li>
         </a>
+        <a href="Connection.php">
+            <li>
+                Connection
+            </li>
+        </a>
     </ul>
 </aside>
