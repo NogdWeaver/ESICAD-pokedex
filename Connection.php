@@ -44,7 +44,7 @@ require_once("database-connection.php");
 		else{
 
 			if(mysqli_num_rows($value = mysqli_query($databaseConnection,
-			"SELECT * FROM utilisateurs WHERE pseudo ='".$_POST['pseudo']."' AND pswd = '". $_POST['mdp']. "'" )) == 1 ){
+			"SELECT * FROM utilisateurs WHERE pseudo ='".$_POST['pseudo']."' AND pswd = '". md5($_POST['mdp']). "'" )) == 1 ){
 
 
 				
