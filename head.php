@@ -24,6 +24,9 @@
         if(isset($_SESSION['session'])){
             echo "Session de " . $_SESSION['session']['prenom'];
         }
+        else {
+            echo "Pas de session";
+        }
 
         ?>
 
