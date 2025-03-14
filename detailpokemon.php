@@ -5,7 +5,7 @@ require_once("head.php");
 
 <!-- Préparation du tableau -->
 
-    <form method="post">
+    <form>
         <p>
         <input type="submit" value="Capturer" name = "capture" >
         </p>
