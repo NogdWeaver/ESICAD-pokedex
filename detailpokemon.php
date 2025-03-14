@@ -5,6 +5,12 @@ require_once("head.php");
 
 <!-- Préparation du tableau -->
 
+    <form method="post">
+        <p>
+        <input type="submit" value="Capturer" name = "capture" >
+        </p>
+    </form>
+
 <table>
     <thead>
         <tr>
@@ -117,6 +123,10 @@ if(mysqli_num_rows($result) > 0){
         else{
             echo "<p>". "Pas d'Evolution". "</p>";
         }
+
+        //section pour l'enregistrement
+
+
     }
 
 }

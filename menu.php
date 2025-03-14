@@ -22,5 +22,11 @@
                 Connection
             </li>
         </a>
+        </a>
+        <a href="enregistrementpokemon.php">
+            <li>
+                Sac à dos 
+            </li>
+        </a>
     </ul>
 </aside>
